@@ -18,7 +18,7 @@ public class MenuState extends State{
 	}
 
 	@Override
-	public void render(Graphics g) {
+	public void render() {
 		// TODO Auto-generated method stub
 	}
 

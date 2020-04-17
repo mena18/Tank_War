@@ -10,7 +10,7 @@ import display.Display;
 
 public class Launcher {
 	public static void main(String [] args) {
-		Game game = new Game("hello",640,480);
+		Game game = new Game("hello",960,720);
 		game.start();
 		
 	}

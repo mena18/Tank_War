@@ -2,18 +2,19 @@ package tilegame;
 
 import display.Display;
 import gfx.Assets;
-import gfx.GameCamera;
-import gfx.ImageLoader;
 
 import java.awt.image.BufferStrategy;
 import java.awt.image.BufferedImage;
 
 import java.io.File;
 import java.io.IOException;
-import gfx.SpriteSheet;
-import input.KeyManager;
 
 import javax.imageio.ImageIO;
+
+import GameLib.GameCamera;
+import GameLib.ImageLoader;
+import GameLib.KeyManager;
+import GameLib.SpriteSheet;
 
 import java.awt.Color;
 import java.awt.Graphics;
@@ -85,11 +86,12 @@ public class Game implements Runnable{
 			return;
 		}
 		g = bs.getDrawGraphics();
+		Handler.set_Graphics(g);
 		g.clearRect(0, 0, width, height);
 		/* start here */
 
 		if(State.getState() != null)
-			State.getState().render(g);
+			State.getState().render();
 		
 		/* End here */
 		bs.show();
@@ -108,7 +110,7 @@ public class Game implements Runnable{
 	public void run() {
 		init();
 		
-		int fps=100;
+		int fps=120;
 		double timePerTick = 1000000000 / fps;
 		double now =System.nanoTime();
 		double last=now;

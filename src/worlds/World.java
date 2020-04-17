@@ -2,9 +2,10 @@ package worlds;
 
 import java.awt.Graphics;
 
+import GameLib.Utils;
 import tilegame.Game;
+import tilegame.Handler;
 import tiles.Tile;
-import utils.Utils;
 
 public class World {
 
@@ -22,7 +23,7 @@ public class World {
 		
 	}
 	
-	public void render(Graphics g){
+	public void render(){
 		int xStart = (int) Math.max(0, game.getGameCamera().getxOffset() / Tile.TILEWIDTH);
 		int xEnd = (int) Math.min(width, (game.getGameCamera().getxOffset() + game.getWidth()) / Tile.TILEWIDTH +1);
 		int yStart = (int) Math.max(0, game.getGameCamera().getyOffset() / Tile.TILEHEIGHT);
@@ -30,7 +31,7 @@ public class World {
 		
 		for(int y = yStart;y < yEnd;y++){
 			for(int x = xStart;x < xEnd;x++){
-				getTile(x, y).render(g, (int) (x * Tile.TILEWIDTH - game.getGameCamera().getxOffset()),
+				getTile(x, y).render((int) (x * Tile.TILEWIDTH - game.getGameCamera().getxOffset()),
 						(int) (y * Tile.TILEHEIGHT - game.getGameCamera().getyOffset()));
 			}
 		}
@@ -39,7 +40,7 @@ public class World {
 	public Tile getTile(int x, int y){
 		Tile t = Tile.tiles[tiles[x][y]];
 		if(t == null)
-			return Tile.dirtTile;
+			return Tile.grass1;
 		return t;
 	}
 	
