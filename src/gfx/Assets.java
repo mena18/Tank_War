@@ -1,5 +1,7 @@
 package gfx;
 
+import java.awt.geom.AffineTransform;
+import java.awt.image.AffineTransformOp;
 import java.awt.image.BufferedImage;
 
 import GameLib.ImageLoader;
@@ -12,6 +14,7 @@ public class Assets {
 	public static BufferedImage player,enemy1,enemy2,enemy3;
 	public static BufferedImage grass1,grass2,sand1,sand2,wall,road,trans_right;
 	public static BufferedImage laser,shield,red_bullet;
+	public static BufferedImage explosion1,explosion2,explosion3,explosion4,explosion5;
 	
 	public static void init(){
 		SpriteSheet sheet = new SpriteSheet(ImageLoader.loadImage("sheet.png"));
@@ -36,6 +39,24 @@ public class Assets {
 		laser = ImageLoader.loadImage("laserBlue16.png");
 		red_bullet = ImageLoader.loadImage("red_bullet.png");
 		shield = ImageLoader.loadImage("shield_gold.png");
+		
+		explosion1 = ImageLoader.loadImage("explosion1.png");
+		explosion2 = ImageLoader.loadImage("explosion2.png");
+		explosion3 = ImageLoader.loadImage("explosion3.png");
+		explosion4 = ImageLoader.loadImage("explosion4.png");
+		explosion5 = ImageLoader.loadImage("explosion5.png");
+
+		
+	}
+	
+	
+	public static BufferedImage rotate(BufferedImage image,int dir){
+		dir *=45;
+		AffineTransform tx = new AffineTransform();
+		tx.rotate(Math.PI/2*dir, image.getWidth()/2, image.getHeight()/2);
+		AffineTransformOp op = new AffineTransformOp(tx,AffineTransformOp.TYPE_BILINEAR);
+		return op.filter(image, null);
+
 	}
 	
 }

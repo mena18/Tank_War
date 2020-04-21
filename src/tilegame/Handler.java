@@ -6,6 +6,7 @@ public class Handler {
 	
 	
 	private static Graphics g;
+	private static Game game;
 	public static void init() {
 		
 	}
@@ -16,5 +17,12 @@ public class Handler {
 	
 	public static Graphics getGraphics() {
 		return g;
+	}
+	
+	public static Game getGame() {
+		return game;
+	}
+	public static void setGame(Game game) {
+		Handler.game = game;
 	}
 }

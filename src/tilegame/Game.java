@@ -69,6 +69,7 @@ public class Game implements Runnable{
 		gamestate = new GameState(this);
 		menustate = new MenuState(this);
 		State.setState(gamestate);
+		Handler.setGame(this);
 
 	}
 	private void tick() {
@@ -110,7 +111,7 @@ public class Game implements Runnable{
 	public void run() {
 		init();
 		
-		int fps=120;
+		int fps=100;
 		double timePerTick = 1000000000 / fps;
 		double now =System.nanoTime();
 		double last=now;

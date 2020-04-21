@@ -18,6 +18,8 @@ public abstract class Sprite {
 	protected BufferedImage Image;
 	protected float xMove,yMove;
 	protected Rectangle rect;
+	protected BufferedImage sprite_images[];
+	protected int last_dir;
 	
 	public Sprite(float x,float y,int width,int height,Game game) {
 		this.x=x;
@@ -25,6 +27,7 @@ public abstract class Sprite {
 		this.width=width;
 		this.height=height;
 		this.game = game;
+		sprite_images = new BufferedImage[4];
 	}
 
 	
@@ -32,7 +35,7 @@ public abstract class Sprite {
 	public abstract void update();
 	
 	public void draw() {
-		Handler.getGraphics().drawImage(Image, (int) (x - game.getGameCamera().getxOffset()), (int) (y - game.getGameCamera().getyOffset()), width, height, null);
+		Handler.getGraphics().drawImage(sprite_images[last_dir], (int) (x - game.getGameCamera().getxOffset()), (int) (y - game.getGameCamera().getyOffset()), width, height, null);
 	}
 	
 	public float right() {return x+width;}
