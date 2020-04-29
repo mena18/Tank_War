@@ -9,6 +9,7 @@ import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
 
 import gfx.Assets;
+import gfx.Explosions;
 
 
 public abstract class Sprite {
@@ -20,14 +21,16 @@ public abstract class Sprite {
 	protected Rectangle rect;
 	protected BufferedImage sprite_images[];
 	protected int last_dir;
+	protected int health=100;
 	
-	public Sprite(float x,float y,int width,int height,Game game) {
+	public Sprite(float x,float y,int width,int height,Game game,int health) {
 		this.x=x;
 		this.y=y;
 		this.width=width;
 		this.height=height;
 		this.game = game;
 		sprite_images = new BufferedImage[4];
+		this.health=health;
 	}
 
 	
@@ -108,6 +111,14 @@ public abstract class Sprite {
 	}
 	
 	public void collisionWithTileAction() {
+		
+	}
+	
+	public void reduce_health(int hel) {
+		this.health-=hel;
+		if(health<=0) {
+			this.destroy();
+		}
 		
 	}
 	

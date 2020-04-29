@@ -1,6 +1,7 @@
 package entities;
 
 import gfx.Assets;
+import gfx.Explosions;
 import tilegame.Game;
 
 import java.awt.image.BufferedImage;
@@ -10,7 +11,7 @@ public class Enemy extends Sprite{
 private float yMove,xMove,speed;
 	
 	public Enemy(float x, float y, int width, int height,BufferedImage Image ,Game game) {
-		super(x, y, width, height, game);
+		super(x, y, width, height, game,100);
 		this.Image = Image;
 		sprite_images[0] = Image;
 		speed=2;
@@ -22,5 +23,12 @@ private float yMove,xMove,speed;
 	public void update() {
 		
 	}
+	
+	public void destroy() {
+		game.getgamestate().enemy_tanks.remove(this);
+		new Explosions((int)x,(int)y,128,128);
+	}
+	
+	
 
 }

@@ -1,6 +1,8 @@
 package tilegame;
 
 import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.image.BufferedImage;
 
 public class Handler {
 	
@@ -17,6 +19,18 @@ public class Handler {
 	
 	public static Graphics getGraphics() {
 		return g;
+	}
+	
+	public static void drawImage(BufferedImage image,float x,float y,int width,int height) {
+		getGraphics().drawImage(image, (int) (x-game.getGameCamera().getxOffset()), (int) (y-game.getGameCamera().getyOffset()), width,height,null);
+	}
+	
+	public static void drawImage(BufferedImage image,float x,float y) {
+		getGraphics().drawImage(image, (int) (x-game.getGameCamera().getxOffset()), (int) (y-game.getGameCamera().getyOffset()),null);
+	}
+	
+	public static void drawtransImage(Graphics2D g,BufferedImage image,float x,float y,int width,int height) {
+		g.drawImage(image, (int) (x-game.getGameCamera().getxOffset()), (int) (y-game.getGameCamera().getyOffset()),null);
 	}
 	
 	public static Game getGame() {

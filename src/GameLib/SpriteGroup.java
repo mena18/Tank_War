@@ -40,9 +40,14 @@ public class SpriteGroup {
 	public void collisionGroup(SpriteGroup g,collisionAction act) {
 		for(int i=0;i<this.size();i++) {
 			for(int j=0;j<g.size();j++) {
-				if(Collisions.rectangle(this.get(i),g.get(j)) ) {
-					act.action(this.get(i),g.get(j));
+				try {
+					if(Collisions.rectangle(this.get(i),g.get(j)) ) {
+						act.action(this.get(i),g.get(j));
+					}
+				} catch (Exception e) {
+					// TODO: handle exception
 				}
+				
 			}
 		}
 	}

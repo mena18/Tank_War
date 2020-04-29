@@ -14,6 +14,7 @@ import javax.imageio.ImageIO;
 import GameLib.GameCamera;
 import GameLib.ImageLoader;
 import GameLib.KeyManager;
+import GameLib.MouseManager;
 import GameLib.SpriteSheet;
 
 import java.awt.Color;
@@ -32,6 +33,7 @@ public class Game implements Runnable{
 	
 	private BufferStrategy bs;
 	private KeyManager keymanager;
+	private MouseManager mousemanager;
 	private Graphics g;
 	private GameCamera camera;
 	
@@ -44,6 +46,7 @@ public class Game implements Runnable{
 		this.height=height;
 		this.title=title;
 		keymanager = new KeyManager();
+		mousemanager = new MouseManager();
 		
 	}
 	
@@ -54,6 +57,10 @@ public class Game implements Runnable{
 	public KeyManager getKeyManager() {
 		return this.keymanager;
 	}
+	public MouseManager getMouseManager() {
+		return this.mousemanager;
+	}
+	
 	
 	public GameCamera getGameCamera() {
 		return camera;
@@ -62,6 +69,10 @@ public class Game implements Runnable{
 	private void init() {
 		display = new Display(title,width,height);
 		display.getFrame().addKeyListener(keymanager);
+		display.getFrame().addMouseListener(mousemanager);
+		display.getFrame().addMouseMotionListener(mousemanager);
+		display.getCanvas().addMouseListener(mousemanager);
+		display.getCanvas().addMouseMotionListener(mousemanager);
 		Assets.init();
 		
 		camera = new GameCamera(this, 0,0);

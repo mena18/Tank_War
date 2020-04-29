@@ -9,6 +9,18 @@ public class Explosions extends Animations {
 		this.x=x;
 		this.y=y;
 		width=64;height=64;
+		this.load();
+	}
+	
+	public Explosions(int x,int y,int width,int height){
+		this.x=x;
+		this.y=y;
+		this.width=width;
+		this.height=height;
+		this.load();
+	}
+	
+	public void load() {
 		images = new BufferedImage[5];
 		images[0] = Assets.explosion1;
 		images[1] = Assets.explosion2;

@@ -23,9 +23,9 @@ import GameLib.collisionAction;
 
 class Tanks_bullets implements collisionAction{
 	public void action(Sprite a,Sprite b) {
-		b.destroy();
 		new Explosions((int)b.getX(),(int)b.getY());
-		System.out.println("good job");
+		b.destroy();
+		a.reduce_health(20);
 	}
 }
 
@@ -64,6 +64,7 @@ public class GameState extends State{
 		enemy_tanks.collisionGroup(player_bullets,tanks_bullets);
 		Animations.update();
 		game.getGameCamera().centerOnEntity(player);
+		
 	
 	}
 
