@@ -40,7 +40,7 @@ public class Game implements Runnable{
 	
 	/* states */
 	private State gamestate;
-	State menustate;
+	private State menustate;
 
 	public Game(String title,int width,int height) {
 		this.width=width;

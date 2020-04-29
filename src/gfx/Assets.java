@@ -12,11 +12,13 @@ public class Assets {
 	private static final int width = 32, height = 32;
 	
 	public static BufferedImage player,player_2,enemy1,enemy2;
+	
 	public static BufferedImage grass1,grass2,sand1,sand2,wall,road,trans_right;
 	public static BufferedImage laser,shield,red_bullet;
 	public static BufferedImage explosion1,explosion2,explosion3,explosion4,explosion5;
 	
-	public static BufferedImage tank_body,canon;
+	public static BufferedImage player_body,player_canon;
+	public static BufferedImage enemy1_body,enemy1_canon;
 	
 	public static void init(){
 		SpriteSheet sheet = new SpriteSheet(ImageLoader.loadImage("sheet.png"));
@@ -48,8 +50,10 @@ public class Assets {
 		explosion4 = ImageLoader.loadImage("explosion4.png");
 		explosion5 = ImageLoader.loadImage("explosion5.png");
 		
-		tank_body = ImageLoader.loadImage("tank_body.png");
-		canon = ImageLoader.loadImage("canon.png");
+		player_body = ImageLoader.loadImage("tank_body.png");
+		player_canon = ImageLoader.loadImage("canon.png");
+		enemy1_body = ImageLoader.loadImage("enemy1_body.png");
+		enemy1_canon = ImageLoader.loadImage("enemy1_canon.png");
 
 		
 	}

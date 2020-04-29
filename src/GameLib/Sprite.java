@@ -18,22 +18,22 @@ public abstract class Sprite {
 	protected float x,y;
 	protected int width,height;
 	protected Game game;
+	
 	protected BufferedImage Image;
+	protected int last_dir;
+	
 	protected float xMove,yMove;
 	protected Rectangle rect;
-	protected BufferedImage sprite_images[];
-	protected int last_dir;
-	protected int health=100;
-	protected int max_health=100;
 	
-	public Sprite(float x,float y,int width,int height,Game game,int health) {
+	
+	public Sprite(float x,float y,int width,int height,Game game,BufferedImage Image) {
 		this.x=x;
 		this.y=y;
 		this.width=width;
 		this.height=height;
 		this.game = game;
-		sprite_images = new BufferedImage[4];
-		this.health=health;
+		this.Image=Image;
+		rect = new Rectangle(5,5,(int)(width*0.8),(int)(height*0.8));
 	}
 
 	
@@ -41,9 +41,7 @@ public abstract class Sprite {
 	public abstract void update();
 	
 	public void draw() {
-		Handler.drawRect(x,y-20,50,10,Color.RED);
-		Handler.drawRect(x,y-20,(int)((1.0*health/max_health)*50),10,Color.GREEN);
-		Handler.drawImage(sprite_images[last_dir],x,y, width, height);
+		Handler.drawImage(Image,x,y, width, height);
 	}
 	
 
@@ -55,20 +53,13 @@ public abstract class Sprite {
 	public float centerX() {return x+width/2;}
 	public float centerY() {return y+height/2;}
 	
-	public float getX() {
-		return x;
-	}
-	public float getY() {
-		return y;
-	}
-	public int getWidth() {
-		return width;
-	}
-	public int getHeight() {
-		return height;
-	}
+	public float getX() {return x;}
+	public float getY() {return y;}
+	public int getWidth() {return width;}
+	public int getHeight() {return height;}
 	
-	public void collisionWithTile(){
+	
+	public void move(){
 		if(xMove > 0){//Moving right
 			int tx = (int) (x + xMove + rect.x + rect.width) / Tile.TILEWIDTH;
 			
@@ -121,22 +112,7 @@ public abstract class Sprite {
 	public void collisionWithTileAction() {
 		
 	}
-	
-	public void reduce_health(int hel) {
-		this.health-=hel;
-		if(health<=0) {
-			this.destroy();
-		}
-		
-	}
-	
-	public void reduce_health(int hel,Bullets b) {
-		this.health-=hel;
-		if(health<=0) {
-			this.destroy();
-			b.get_player().inc_score(25);
-		}
-	}
+
 	
 	protected boolean isSolid(int x, int y){
 		return game.getgamestate().getWorld().getTile(x, y).isSolid();
@@ -147,13 +123,7 @@ public abstract class Sprite {
 		//game.getgamestate().sprites.remove(this);
 	}
 	
-	public int get_health() {
-		return this.health;
-	}
-	
-	public void set_health(int h) {
-		this.health=Math.min(max_health, h);
-	}
+
 	
 	
 }

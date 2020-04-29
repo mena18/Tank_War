@@ -30,8 +30,12 @@ public class Handler {
 		getGraphics().drawImage(image, (int) (x-game.getGameCamera().getxOffset()), (int) (y-game.getGameCamera().getyOffset()),null);
 	}
 	
-	public static void drawtransImage(Graphics2D g,BufferedImage image,float x,float y,int width,int height) {
+	public static void drawtransImage(Graphics2D g,BufferedImage image,float x,float y) {
 		g.drawImage(image, (int) (x-game.getGameCamera().getxOffset()), (int) (y-game.getGameCamera().getyOffset()),null);
+	}
+	
+	public static void drawtransImage(Graphics2D g,BufferedImage image,float x,float y,int width,int height) {
+		g.drawImage(image, (int) (x-game.getGameCamera().getxOffset()), (int) (y-game.getGameCamera().getyOffset()),width,height,null);
 	}
 	
 	public static void drawRect(float x,float y,int width,int height) {

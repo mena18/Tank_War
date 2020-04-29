@@ -6,15 +6,16 @@ import GameLib.Animations;
 
 public class Explosions extends Animations {
 	public Explosions (int x,int y){
-		this.x=x;
-		this.y=y;
+		
 		width=64;height=64;
+		this.x=x-width/2;
+		this.y=y-height/2;
 		this.load();
 	}
 	
 	public Explosions(int x,int y,int width,int height){
-		this.x=x;
-		this.y=y;
+		this.x=x-width/2;
+		this.y=y-height/2;
 		this.width=width;
 		this.height=height;
 		this.load();

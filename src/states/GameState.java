@@ -7,6 +7,7 @@ import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 
 import entities.Bonus;
+import entities.Bonus2;
 import entities.Bullets;
 import entities.Enemy;
 import entities.Player;
@@ -26,7 +27,7 @@ class Tanks_bullets implements collisionAction{
 		new Explosions((int)bullet.getX(),(int)bullet.getY());
 		((Bullets)bullet).get_player().inc_score(5);
 		bullet.destroy();
-		enemy.reduce_health(20,(Bullets)bullet);
+		((Enemy)enemy).reduce_health(20,(Bullets)bullet);
 	}
 }
 
@@ -35,6 +36,13 @@ class Player_bonus implements collisionAction{
 		((Bonus)bonus).bonus_effect();
 	}
 }
+
+class Player_bonus2 implements collisionAction{
+	public void action(Sprite player,Sprite bonus) {
+		((Bonus2)bonus).bonus_effect();
+	}
+}
+
 
 class Player_enemy_action implements collisionAction{
 
@@ -51,7 +59,7 @@ public class GameState extends State{
 
 	private Player player;
 	private World world;
-	private collisionAction tanks_bullets,player_bonus,player_enemy_action;
+	private collisionAction tanks_bullets,player_bonus,player_enemy_action,player_bonus2;
 	
 	public  SpriteGroup Players,enemy_tanks,player_bullets,bonuses;
 	
@@ -68,13 +76,16 @@ public class GameState extends State{
 
 	
 		Players.add(player);
-		enemy_tanks.add(new Enemy(300,300,50, 50, Assets.enemy1, game));
-		enemy_tanks.add(new Enemy(500,500,50, 50, Assets.enemy1, game));
+		enemy_tanks.add(new Enemy(300,300,50, 50, game));
+		enemy_tanks.add(new Enemy(500,500,50, 50, game));
+		enemy_tanks.add(new Enemy(600,600,50, 50, game));
 		bonuses.add(new Bonus(700, 500,30,30 ,game,player));
+		bonuses.add(new Bonus2(400, 400,30,30 ,game,player));
 		
 		tanks_bullets = new Tanks_bullets();
 		player_bonus = new Player_bonus();
 		player_enemy_action = new Player_enemy_action();
+		player_bonus2 = new Player_bonus2();
 	}
 
 	@Override
@@ -90,6 +101,7 @@ public class GameState extends State{
 		// collision
 		enemy_tanks.collisionGroup(player_bullets,tanks_bullets);
 		Players.collisionGroup(bonuses, player_bonus);
+		Players.collisionGroup(bonuses, player_bonus2);
 		Players.collisionGroup(enemy_tanks, player_enemy_action);
 		
 		game.getGameCamera().centerOnEntity(player);
