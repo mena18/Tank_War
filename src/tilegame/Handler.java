@@ -1,5 +1,6 @@
 package tilegame;
 
+import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
@@ -31,6 +32,33 @@ public class Handler {
 	
 	public static void drawtransImage(Graphics2D g,BufferedImage image,float x,float y,int width,int height) {
 		g.drawImage(image, (int) (x-game.getGameCamera().getxOffset()), (int) (y-game.getGameCamera().getyOffset()),null);
+	}
+	
+	public static void drawRect(float x,float y,int width,int height) {
+		g.fillRect((int) (x-game.getGameCamera().getxOffset()), (int) (y-game.getGameCamera().getyOffset()),width,height);
+	}
+	public static void drawRect(float x,float y,int width,int height,Color color) {
+		g.setColor(color);
+		g.fillRect((int) (x-game.getGameCamera().getxOffset()), (int) (y-game.getGameCamera().getyOffset()),width,height);
+	}
+	
+	public static void drawtext(String text,int x,int y) {
+		g.setColor(Color.white);
+		g.drawString(text,(int) (x-game.getGameCamera().getxOffset()),(int) (y-game.getGameCamera().getyOffset()));
+	}
+	
+	
+	public static void drawStaticRect(float x,float y,int width,int height) {
+		g.fillRect((int) (x), (int) (y),width,height);
+	}
+	public static void drawStaticRect(float x,float y,int width,int height,Color color) {
+		g.setColor(color);
+		g.fillRect((int) (x), (int) (y),width,height);
+	}
+	
+	public static void drawStatictext(String text,int x,int y) {
+		g.setColor(Color.white);
+		g.drawString(text, x, y);
 	}
 	
 	public static Game getGame() {

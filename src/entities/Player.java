@@ -18,9 +18,10 @@ public class Player extends Sprite{
 	private float shoot_speed = 1000000000/5;
 	private BufferedImage Canon;
 	double degree=0;
+	private int score=0;
 	
 	public Player(float x, float y, int width, int height, Game game) {
-		super(x, y, width, height, game,100);
+		super(x, y, width, height, game,60);
 		//Image = Assets.tank_body;
 		Image = Assets.tank_body;
 		Canon = Assets.canon;
@@ -39,11 +40,11 @@ public class Player extends Sprite{
 	public void update() {
 		get_input();
 		collisionWithTile(); // check collision with tiles then move or stop
-		double one = game.getMouseManager().getMouseX()+game.getGameCamera().getxOffset()-this.middle();
-		double two = game.getMouseManager().getMouseY()+game.getGameCamera().getyOffset()-this.getY();
+		double one = game.getMouseManager().getMouseX()+game.getGameCamera().getxOffset()-this.centerX();
+		double two = game.getMouseManager().getMouseY()+game.getGameCamera().getyOffset()-this.centerY();
 		degree = Math.atan2(two,one) - Math.PI/2;
 		if(game.getMouseManager().isLeftPressed() && System.nanoTime() - last_shot > shoot_speed) {
-			Bullets bullet = new Bullets(this.middle()-6, y,this, game);
+			Bullets bullet = new Bullets(this.centerX()-6, this.centerY(),this, game);
 			game.getgamestate().player_bullets.add(bullet);
 			last_shot = System.nanoTime();
 		}
@@ -75,15 +76,37 @@ public class Player extends Sprite{
 	}
 	
 	public void draw() {
+		
+		Handler.drawStaticRect(730,30,200,20,Color.RED);
+		Handler.drawStaticRect(730,30,(int)((1.0*health/max_health)*200),20,Color.GREEN);
+		Handler.drawStatictext("Score : "+this.score, 730, 70);
+		
 		Handler.drawImage(sprite_images[last_dir],x , y, width, height);
 		Graphics2D g = (Graphics2D)Handler.getGraphics().create(); //<- you should have this in your code somewhere
 		AffineTransform at = new AffineTransform(); 
-		at.rotate(degree, this.middle()-game.getGameCamera().getxOffset(), (this.getY()+this.getHeight()/2) - game.getGameCamera().getyOffset() ); //<- your question: rotate around specified point
+		at.rotate(degree, this.centerX()-game.getGameCamera().getxOffset(), (this.centerY()) - game.getGameCamera().getyOffset() ); //<- your question: rotate around specified point
 		g.setTransform(at); //<- tell the graphics to transform before painting
-		Handler.drawtransImage(g, Canon, this.middle()-8, this.getY()+this.getHeight()/2,16,45);
+		Handler.drawtransImage(g, Canon, this.centerX()-8, this.centerY(),16,45);
 		//g.drawImage(Canon,); //<- draws transformed image
 		
 		//Handler.drawImage(Assets.rotate(Canon, 2), this.middle()-8, this.bottom()-32,16,45);
+	}
+	
+	public int get_score() {
+		return this.score;
+	}
+	
+	public void set_score(int score) {
+		this.score = score;
+	}
+	public void inc_score(int score) {
+		this.score += score;
+	}
+	
+	
+	public void undo() {
+		x-=xMove;
+		y-=yMove;
 	}
 	
 	

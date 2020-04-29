@@ -15,13 +15,13 @@ private float yMove,xMove,speed;
 		this.Image = Image;
 		sprite_images[0] = Image;
 		speed=2;
-		
+		yMove=-1;
 		// TODO Auto-generated constructor stub
 	}
 
 	@Override
 	public void update() {
-		
+		y+=yMove;
 	}
 	
 	public void destroy() {
@@ -29,6 +29,9 @@ private float yMove,xMove,speed;
 		new Explosions((int)x,(int)y,128,128);
 	}
 	
+	public void undo() {
+		y-=yMove;
+	}
 	
 
 }

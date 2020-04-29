@@ -18,6 +18,7 @@ import GameLib.MouseManager;
 import GameLib.SpriteSheet;
 
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics;
 
 import states.State;
@@ -100,6 +101,7 @@ public class Game implements Runnable{
 		g = bs.getDrawGraphics();
 		Handler.set_Graphics(g);
 		g.clearRect(0, 0, width, height);
+		g.setFont(new Font("TimesRoman", Font.PLAIN, 20)); 
 		/* start here */
 
 		if(State.getState() != null)
