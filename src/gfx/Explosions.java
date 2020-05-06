@@ -3,6 +3,7 @@ package gfx;
 import java.awt.image.BufferedImage;
 
 import GameLib.Animations;
+import GameLib.Music;
 
 public class Explosions extends Animations {
 	public Explosions (int x,int y){
@@ -30,6 +31,8 @@ public class Explosions extends Animations {
 		images[4] = Assets.explosion5;
 		i=0;
 		length=5;
+		new Music(Assets.shooting1).play();    
+		
 		this.start();
 	}
 }

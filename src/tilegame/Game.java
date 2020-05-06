@@ -15,6 +15,7 @@ import GameLib.GameCamera;
 import GameLib.ImageLoader;
 import GameLib.KeyManager;
 import GameLib.MouseManager;
+import GameLib.Music;
 import GameLib.SpriteSheet;
 
 import java.awt.Color;
@@ -77,6 +78,8 @@ public class Game implements Runnable{
 		Assets.init();
 		
 		camera = new GameCamera(this, 0,0);
+		
+		new Music(Assets.music_loop).loop();
 		
 		gamestate = new GameState(this);
 		menustate = new MenuState(this);

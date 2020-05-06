@@ -3,6 +3,7 @@ package gfx;
 import java.awt.geom.AffineTransform;
 import java.awt.image.AffineTransformOp;
 import java.awt.image.BufferedImage;
+import java.io.File;
 
 import GameLib.ImageLoader;
 import GameLib.SpriteSheet;
@@ -19,6 +20,8 @@ public class Assets {
 	
 	public static BufferedImage player_body,player_canon;
 	public static BufferedImage enemy1_body,enemy1_canon;
+	
+	public static File shooting1,music_loop;
 	
 	public static void init(){
 		SpriteSheet sheet = new SpriteSheet(ImageLoader.loadImage("sheet.png"));
@@ -54,6 +57,9 @@ public class Assets {
 		player_canon = ImageLoader.loadImage("canon.png");
 		enemy1_body = ImageLoader.loadImage("enemy1_body.png");
 		enemy1_canon = ImageLoader.loadImage("enemy1_canon.png");
+		
+		shooting1 = new File("res/audio/playerjump.wav");
+		music_loop = new File("res/audio/level 1.wav");
 
 		
 	}
