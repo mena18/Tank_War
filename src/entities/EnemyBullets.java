@@ -6,14 +6,15 @@ import gfx.Assets;
 import tilegame.Game;
 
 public class EnemyBullets extends Bullet{
-	public EnemyBullets(float x, float y,Tank tank, Game game,float xMove,float yMove) {
+	public EnemyBullets(float x, float y,Tank tank, Game game,float mx,float my) {
 
 		super(x, y, game,Assets.red_bullet);
 		rect = new Rectangle(0,0,width,height);
-		speed=9;
+		speed=2;
 		this.tank=tank;
-		this.xMove = xMove;
-		this.yMove = yMove;
+		float sqr = (float)Math.sqrt((mx*mx)+(my*my));
+		xMove = (mx)/sqr*speed;
+		yMove = (my)/sqr*speed;
 		game.getgamestate().enemy_bullets.add(this);
 		// TODO Auto-generated constructor stub
 	}

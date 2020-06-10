@@ -26,7 +26,9 @@ import entities.Bonus;
 
 public class GameState extends State{
 
-	private Player player;
+	public Player player;
+	public Base base;
+	
 	private World world;
 	
 	public  SpriteGroup Players,enemy_tanks,player_bullets,bonuses,enemy_bullets,Player_base,enemy_base;
@@ -44,9 +46,9 @@ public class GameState extends State{
 		
 
 		
-		world = new World("res/map1.txt",game);
+		world = new World("res/map2.txt",game);
 		player = new Player(128,128,64,64,game);
-
+		base = new Base(1250, 1250, 100, 100, game, Assets.base1);
 	
 		Players.add(player);
 		enemy_tanks.add(new Enemy(300,300,50, 50, game));
@@ -55,8 +57,8 @@ public class GameState extends State{
 		bonuses.add(new HealthBonus(700, 500,30,30 ,game,player));
 		bonuses.add(new Bonus2(400, 400,30,30 ,game,player));
 		
-		Player_base.add(new Base(1300, 300, 100, 100, game, Assets.base1));
-		enemy_base.add(new Base(370, 370, 100, 100, game, Assets.base2));
+		Player_base.add(base);
+		enemy_base.add(new Base(50, 50, 100, 100, game, Assets.base2));
 		
 	}
 
