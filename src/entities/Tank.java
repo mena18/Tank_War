@@ -65,19 +65,12 @@ public class Tank extends Sprite{
 	
 	
 	public void reduce_health(int hel) {
+		System.out.println("reduce health");
 		this.health-=hel;
 		if(health<=0) {
 			this.destroy();
 		}
 		
-	}
-	
-	public void reduce_health(int hel,Bullets b) {
-		this.health-=hel;
-		if(health<=0) {
-			this.destroy();
-			b.get_player().inc_score(25);
-		}
 	}
 	
 	public void get_dir() {
@@ -94,12 +87,12 @@ public class Tank extends Sprite{
 	}
 	
 	
-	public void shoot() {
-		if(System.nanoTime() - last_shot > shoot_speed) {
-			new Bullets(this.centerX()-6, this.centerY(),this, game,3,0);
-			last_shot = System.nanoTime();
-		}
-	}
+//	public void shoot() {
+//		if(System.nanoTime() - last_shot > shoot_speed) {
+//			new Bullets(this.centerX()-6, this.centerY(),this, game,3,0);
+//			last_shot = System.nanoTime();
+//		}
+//	}
 	
 	
 	

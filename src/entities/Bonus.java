@@ -1,15 +1,15 @@
 package entities;
 
+import java.awt.image.BufferedImage;
+
+import GameLib.Sprite;
 import gfx.Assets;
 import tilegame.Game;
-import tilegame.Handler;
-import GameLib.Sprite;
 
-public class Bonus extends Sprite{
-	
+public abstract class Bonus extends Sprite{
 	Player player;
-	public Bonus(float x, float y, int width, int height, Game game,Player player) {
-		super(x, y, width, height, game,Assets.shield);
+	public Bonus(float x, float y, int width, int height, Game game,Player player,BufferedImage Image) {
+		super(x, y, width, height, game,Image);
 		this.player=player;
 		// TODO Auto-generated constructor stub
 	}
@@ -21,15 +21,7 @@ public class Bonus extends Sprite{
 		
 	}
 	
-	public void bonus_effect() {
-		this.player.set_health(player.get_health()+30);
-		this.destroy();
-	}
+	public abstract void bonus_effect();
 	
-	public void destroy() {
-		game.getgamestate().bonuses.remove(this);
-	}
-	
-
-
+	public abstract void destroy() ;
 }

@@ -16,6 +16,7 @@ public class Enemy extends Tank{
 		xMove=2;
 		speed=3;
 		degree=-Math.PI/2;
+		shoot_speed=500000000;
 
 		// TODO Auto-generated constructor stub
 	}
@@ -26,7 +27,15 @@ public class Enemy extends Tank{
 	public void update() {
 		get_dir();
 		this.move();
-		//this.shoot();
+		this.shoot();
+	}
+	
+	public void shoot() {
+		if(System.nanoTime() - last_shot > shoot_speed) {
+			EnemyBullets bullet = new EnemyBullets(this.centerX()-6, this.centerY(),this, game,3,0);
+			game.getgamestate().enemy_bullets.add(bullet);
+			last_shot = System.nanoTime();
+		}
 	}
 	
 	

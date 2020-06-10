@@ -42,7 +42,8 @@ public class Player extends Tank{
 	
 	public void shoot(float one,float two) {
 		if(System.nanoTime() - last_shot > shoot_speed) {
-			Bullets bullet = new Bullets(this.centerX()-6, this.centerY(),this, game,one,two);
+			PlayerBullets bullet = new PlayerBullets(this.centerX()-6, this.centerY(),this, game,one,two);
+			
 			last_shot = System.nanoTime();
 		}
 	}
@@ -85,6 +86,9 @@ public class Player extends Tank{
 	
 	public int get_score() {
 		return this.score;
+	}
+	public int get_health() {
+		return this.health;
 	}
 	
 	public void set_score(int score) {

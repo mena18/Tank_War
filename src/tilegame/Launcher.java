@@ -6,6 +6,5 @@ public class Launcher {
 		//Game game = new Game("hello",960,720);
 		Game game = new Game("hello",1400,950);
 		game.start();
-		
 	}
 }

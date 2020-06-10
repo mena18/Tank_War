@@ -9,7 +9,7 @@ import java.awt.Graphics;
 import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
 
-import entities.Bullets;
+import entities.PlayerBullets;
 import gfx.Assets;
 import gfx.Explosions;
 
