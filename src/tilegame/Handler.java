@@ -1,9 +1,12 @@
 package tilegame;
 
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
+
+import GameLib.MouseManager;
 
 public class Handler {
 	
@@ -71,4 +74,16 @@ public class Handler {
 	public static void setGame(Game game) {
 		Handler.game = game;
 	}
+	
+	public static void drawStatictext_forMenu(String text,int x,int y){
+		g.setColor(Color.white);
+		g.setFont(new Font("Arial",Font.BOLD,60));
+		g.drawString(text, x, y);
+	}
+	
+	public static MouseManager getMouseManager(){
+		return game.getMouseManager();
+	}
+	
+	
 }

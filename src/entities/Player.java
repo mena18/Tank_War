@@ -18,7 +18,7 @@ public class Player extends Tank{
 	public Player(float x, float y, int width, int height, Game game) {
 		super(x, y, width, height, game,100,Assets.player_body,Assets.player_canon);
 		speed=4;
-		health=60;
+		health=100;
 		
 		// TODO Auto-generated constructor stub
 	}

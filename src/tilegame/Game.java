@@ -40,8 +40,8 @@ public class Game implements Runnable{
 	private GameCamera camera;
 	
 	/* states */
-	private State gamestate;
-	private State menustate;
+	public State gamestate;
+	public State menustate;
 
 	public Game(String title,int width,int height) {
 		this.width=width;
@@ -79,11 +79,10 @@ public class Game implements Runnable{
 		
 		camera = new GameCamera(this, 0,0);
 		
-		new Music(Assets.music_loop).loop();
 		
 		gamestate = new GameState(this);
 		menustate = new MenuState(this);
-		State.setState(gamestate);
+		State.setState(menustate);
 		Handler.setGame(this);
 
 	}

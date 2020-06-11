@@ -19,6 +19,7 @@ import tilegame.Game;
 import tiles.Tile;
 import worlds.World;
 import GameLib.Animations;
+import GameLib.Music;
 import GameLib.Sprite;
 import GameLib.SpriteGroup;
 import GameLib.collisionAction;

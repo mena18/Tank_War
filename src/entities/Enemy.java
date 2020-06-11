@@ -53,10 +53,12 @@ public class Enemy extends Tank{
 	public void make_direction_base_on_tile() {
 		int tx = (int) (x + rect.x + rect.width) / Tile.TILEWIDTH;
 		int ty = (int) (y +  rect.y + rect.height) / Tile.TILEHEIGHT;
-		if(!isSolid(tx+3,ty)) {
+		Tile first_tile = game.getgamestate().getWorld().getTile(tx+3, ty-1);
+		Tile second_tile = game.getgamestate().getWorld().getTile(tx, ty+3);
+		if(!first_tile.isSolid()) {
 			xMove=speed;
 			yMove=0;
-		}else if(!isSolid(tx,ty+3)) {
+		}else if(!second_tile.isSolid()) {
 			yMove=speed;
 			xMove=0;
 		}else {
@@ -64,10 +66,6 @@ public class Enemy extends Tank{
 			xMove=0;
 		}
 		
-	}
-	
-	protected boolean isSolid(int x, int y){
-		return game.getgamestate().getWorld().getTile(x, y).isSolid();
 	}
 	
 	public double player_distance() {
