@@ -93,7 +93,7 @@ public class Enemy extends Tank{
 	public void destroy() {
 		game.getgamestate().enemy_tanks.remove(this);
 		new Explosions((int)x,(int)y,128,128);
-		if(Math.random()<=0.3)
+		if(Math.random()<= 0.3)
 			game.getgamestate().bonus_factory.create_bonus(x,y);
 	}
 	

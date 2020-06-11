@@ -98,6 +98,11 @@ public class Player extends Tank{
 		this.score += score;
 	}
 	
+	public void set_position(float x,float y) {
+		this.x = x;
+		this.y = y;
+	}
+	
 	
 	
 	

@@ -31,15 +31,15 @@ public class GameState extends State{
 	public Player player;
 	public Base base;
 	
-	private World world;
-	
+	public World world;
+	public Levels level;
 	public  SpriteGroup Players,enemy_tanks,player_bullets,bonuses,enemy_bullets,Player_base,enemy_base;
 	public BonusFactory bonus_factory;
 	
 	public GameState(Game game) {
 		super(game);
+		
 		bonuses = new SpriteGroup();
-		base = new Base(1250, 1250, 100, 100, game, Assets.base1);
 		
 		player = new Player(128,128,64,64,game);
 		Players = new SpriteGroup();
@@ -53,13 +53,12 @@ public class GameState extends State{
 		
 		Player_base = new SpriteGroup();
 		enemy_base = new SpriteGroup();
-		Player_base.add(base);
+
+		level = new Levels(1, game,this);
+		level.start_current_level();
+
 		
-		
-		world = new World("res/map2.txt",game);
-		
-		enemy_base.add(new Base(50, 50, 100, 100, game, Assets.base2,new TankFactory(game, enemy_tanks)));
-		
+
 	}
 
 	@Override
@@ -137,6 +136,10 @@ public class GameState extends State{
 		
 		game.getGameCamera().centerOnEntity(player);
 		
+		
+		if(enemy_base.size()==0 && enemy_tanks.size()==0) {
+			level.next_level();
+		}
 	
 	}
 

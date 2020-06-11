@@ -37,6 +37,10 @@ public class SpriteGroup {
 		return (int) this.sprites.size();
 	}
 	
+	public void clear() {
+		sprites.clear();
+	}
+	
 	public void collisionGroup(SpriteGroup g,collisionAction act) {
 		for(int i=0;i<this.size();i++) {
 			for(int j=0;j<g.size();j++) {
