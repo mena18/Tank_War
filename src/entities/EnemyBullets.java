@@ -6,9 +6,9 @@ import gfx.Assets;
 import tilegame.Game;
 
 public class EnemyBullets extends Bullet{
-	public EnemyBullets(float x, float y,Tank tank, Game game,float mx,float my) {
+	public EnemyBullets(float x, float y,Tank tank, Game game,float mx,float my,double degree) {
 
-		super(x, y, game,Assets.red_bullet);
+		super(x, y, game,Assets.red_bullet,degree);
 		rect = new Rectangle(0,0,width,height);
 		speed=4;
 		this.tank=tank;

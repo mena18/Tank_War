@@ -32,12 +32,15 @@ public class MouseManager implements MouseListener, MouseMotionListener {
 	
 	@Override
 	public void mousePressed(MouseEvent e) {
-		this.mouseMoved(e);
-		if(e.getButton() == MouseEvent.BUTTON1)
+
+		if(e.getButton() == MouseEvent.BUTTON1) {
 			leftPressed = true;
+		}
+			
 		else if(e.getButton() == MouseEvent.BUTTON3)
 			rightPressed = true;
 	}
+
 
 	@Override
 	public void mouseReleased(MouseEvent e) {
@@ -56,9 +59,9 @@ public class MouseManager implements MouseListener, MouseMotionListener {
 	}
 	
 	@Override
-	public void mouseDragged(MouseEvent e) {
-		// TODO Auto-generated method stub
-		
+	public void mouseDragged(MouseEvent e) {		
+		mouseX = e.getX();
+		mouseY = e.getY();
 	}
 
 	@Override

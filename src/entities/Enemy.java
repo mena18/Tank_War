@@ -13,8 +13,8 @@ import GameLib.Sprite;
 public class Enemy extends Tank{
 	boolean shooting;
 	float range;
-	public Enemy(float x, float y, int width, int height,Game game,int speed,float shoot_speed,float range) {
-		super(x, y, width, height, game,100,Assets.enemy1_body,Assets.enemy1_canon);
+	public Enemy(float x, float y, int width, int height,Game game,int speed,float shoot_speed,float range,BufferedImage body,BufferedImage cannon) {
+		super(x, y, width, height, game,100,body,cannon);
 		xMove=0;
 		yMove=0;
 		this.speed=speed;
@@ -47,7 +47,7 @@ public class Enemy extends Tank{
 		make_direction_base_on_tile();
 		get_dir();
 		this.move();
-		this.shoot(one,two);
+		this.shoot(one,two,degree);
 	}
 	
 	public void make_direction_base_on_tile() {
@@ -80,9 +80,9 @@ public class Enemy extends Tank{
 		return Math.sqrt(o*o + s*s);
 	}
 	
-	public void shoot(float one,float two) {
+	public void shoot(float one,float two,double degree) {
 		if(System.nanoTime() - last_shot > 1000000000/shoot_speed && shooting) {
-			EnemyBullets bullet = new EnemyBullets(this.centerX()-6, this.centerY(),this, game,one,two);
+			EnemyBullets bullet = new EnemyBullets(this.centerX()-6, this.centerY(),this, game,one,two,degree);
 			last_shot = System.nanoTime();
 		}
 	}
@@ -91,7 +91,7 @@ public class Enemy extends Tank{
 	public void destroy() {
 		game.getgamestate().enemy_tanks.remove(this);
 		new Explosions((int)x,(int)y,128,128);
-		if(Math.random()<= 0.3)
+		if(Math.random()<= 0.5)
 			game.getgamestate().bonus_factory.create_bonus(x,y);
 	}
 	

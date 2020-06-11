@@ -20,6 +20,8 @@ public class Assets {
 	
 	public static BufferedImage player_body,player_canon;
 	public static BufferedImage enemy1_body,enemy1_canon;
+	public static BufferedImage enemy2_body,enemy2_canon;
+	public static BufferedImage enemy3_body,enemy3_canon;
 	
 	public static BufferedImage base1,base2,money,upgrade;
 	
@@ -59,6 +61,10 @@ public class Assets {
 		player_canon = ImageLoader.loadImage("canon.png");
 		enemy1_body = ImageLoader.loadImage("enemy1_body.png");
 		enemy1_canon = ImageLoader.loadImage("enemy1_canon.png");
+		enemy2_body = ImageLoader.loadImage("enemy2_body.png");
+		enemy2_canon = ImageLoader.loadImage("enemy2_canon.png");
+		enemy3_body = ImageLoader.loadImage("enemy3_body.png");
+		enemy3_canon = ImageLoader.loadImage("enemy3_canon.png");
 		
 		base1 = ImageLoader.loadImage("base1.png");
 		base2= ImageLoader.loadImage("base2.png");

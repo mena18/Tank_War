@@ -34,16 +34,16 @@ public class Player extends Tank{
 		degree = Math.atan2(two,one) - Math.PI/2;
 		
 		if(game.getMouseManager().isLeftPressed()) {
-			this.shoot(one,two);
+			this.shoot(one,two,degree);
 		}
 		
 		
 			
 	}
 	
-	public void shoot(float one,float two) {
+	public void shoot(float one,float two,double degree) {
 		if(System.nanoTime() - last_shot > 1000000000/shoot_speed) {
-			PlayerBullets bullet = new PlayerBullets(this.centerX()-6, this.centerY(),this, game,one,two);
+			PlayerBullets bullet = new PlayerBullets(this.centerX()-6, this.centerY(),this, game,one,two,degree);
 			
 			last_shot = System.nanoTime();
 		}
