@@ -141,6 +141,12 @@ public class GameState extends State{
 		if(enemy_base.size()==0 && enemy_tanks.size()==0) {
 			level.next_level();
 		}
+		
+		if(Player_base.size()==0) {
+			player.destroy();
+		}
+		
+		
 	
 	}
 

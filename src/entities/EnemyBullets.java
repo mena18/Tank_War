@@ -10,7 +10,7 @@ public class EnemyBullets extends Bullet{
 
 		super(x, y, game,Assets.red_bullet);
 		rect = new Rectangle(0,0,width,height);
-		speed=2;
+		speed=4;
 		this.tank=tank;
 		float sqr = (float)Math.sqrt((mx*mx)+(my*my));
 		xMove = (mx)/sqr*speed;

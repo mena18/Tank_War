@@ -13,15 +13,15 @@ import GameLib.Sprite;
 public class Enemy extends Tank{
 	boolean shooting;
 	float range;
-	public Enemy(float x, float y, int width, int height,Game game) {
+	public Enemy(float x, float y, int width, int height,Game game,int speed,float shoot_speed,float range) {
 		super(x, y, width, height, game,100,Assets.enemy1_body,Assets.enemy1_canon);
 		xMove=0;
 		yMove=0;
-		speed=2;
+		this.speed=speed;
 		degree=13;
-		shoot_speed=500000000;
+		this.shoot_speed=shoot_speed;
 		shooting = false;
-		range=500;
+		this.range=range;
 		// TODO Auto-generated constructor stub
 	}
 	
@@ -81,7 +81,7 @@ public class Enemy extends Tank{
 	}
 	
 	public void shoot(float one,float two) {
-		if(System.nanoTime() - last_shot > shoot_speed && shooting) {
+		if(System.nanoTime() - last_shot > 1000000000/shoot_speed && shooting) {
 			EnemyBullets bullet = new EnemyBullets(this.centerX()-6, this.centerY(),this, game,one,two);
 			last_shot = System.nanoTime();
 		}

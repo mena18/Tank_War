@@ -3,6 +3,7 @@ package Factory;
 import GameLib.SpriteGroup;
 import entities.Bonus;
 import entities.ScoreBonus;
+import entities.SpeedBonus;
 import entities.HealthBonus;
 import tilegame.Game;
 
@@ -17,9 +18,11 @@ public class BonusFactory {
 	
 	public void create_bonus(float x,float y) {
 		System.out.println("inside bonus factory");
-		int n = (int)(Math.random()*2);
+		int n = (int)(Math.random()*3);
 		if(n==0) {
 			 new HealthBonus(x, y, 30, 30, game, game.getgamestate().player);
+		}else if(n==1){
+			new SpeedBonus(x, y, 30, 30, game, game.getgamestate().player);
 		}else {
 			 new ScoreBonus(x, y, 30, 30, game, game.getgamestate().player);
 		}

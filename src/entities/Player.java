@@ -8,6 +8,7 @@ import java.awt.geom.AffineTransform;
 import java.awt.image.BufferedImage;
 import GameLib.Sprite;
 import gfx.Assets;
+import states.State;
 import tilegame.Game;
 import tilegame.Handler;
 import tiles.Tile;
@@ -19,7 +20,7 @@ public class Player extends Tank{
 		super(x, y, width, height, game,100,Assets.player_body,Assets.player_canon);
 		speed=4;
 		health=100;
-		
+		shoot_speed=4;
 		// TODO Auto-generated constructor stub
 	}
 
@@ -41,7 +42,7 @@ public class Player extends Tank{
 	}
 	
 	public void shoot(float one,float two) {
-		if(System.nanoTime() - last_shot > shoot_speed) {
+		if(System.nanoTime() - last_shot > 1000000000/shoot_speed) {
 			PlayerBullets bullet = new PlayerBullets(this.centerX()-6, this.centerY(),this, game,one,two);
 			
 			last_shot = System.nanoTime();
@@ -103,6 +104,25 @@ public class Player extends Tank{
 		this.y = y;
 	}
 	
+	public void increase_speed() {
+		shoot_speed++;
+		speed++;
+	}
+	
+	public void destroy() {
+		game.getgamestate().level.current_level=1;
+		game.menustate.set_values(500,"Game Over","play Again");
+		State.setState(game.menustate);
+		game.getgamestate().level.level_1();
+		reset();
+	}
+	
+	public void reset() {
+		score=0;
+		health=100;
+		speed=4;
+		shoot_speed=4;
+	}
 	
 	
 	

@@ -75,8 +75,8 @@ public class Handler {
 		Handler.game = game;
 	}
 	
-	public static void drawStatictext_forMenu(String text,int x,int y){
-		g.setColor(Color.white);
+	public static void drawStatictext_forMenu(Color color,String text,int x,int y){
+		g.setColor(color);
 		g.setFont(new Font("Arial",Font.BOLD,60));
 		g.drawString(text, x, y);
 	}

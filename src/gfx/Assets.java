@@ -21,7 +21,7 @@ public class Assets {
 	public static BufferedImage player_body,player_canon;
 	public static BufferedImage enemy1_body,enemy1_canon;
 	
-	public static BufferedImage base1,base2,money;
+	public static BufferedImage base1,base2,money,upgrade;
 	
 	public static File shooting1,music_loop;
 	
@@ -64,10 +64,13 @@ public class Assets {
 		base2= ImageLoader.loadImage("base2.png");
 		
 		money = ImageLoader.loadImage("money.png");
+		upgrade = ImageLoader.loadImage("upgrade.png");
 		
 		shooting1 = new File("res/audio/playerjump.wav");
 		music_loop = new File("res/audio/level 1.wav");
 
+		
+		
 		
 	}
 	
