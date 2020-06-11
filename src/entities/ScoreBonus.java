@@ -8,12 +8,11 @@ import java.awt.image.BufferedImage;
 
 import GameLib.Sprite;
 
-public class Bonus2 extends Bonus{
+public class ScoreBonus extends Bonus{
 	
-	Player player;
-	public Bonus2(float x, float y, int width, int height, Game game,Player player) {
-		super(x, y, width, height, game,player,Assets.shield);
-		this.player=player;
+	public ScoreBonus(float x, float y, int width, int height, Game game,Player player) {
+		super(x, y, width, height, game,player,Assets.money);
+		
 		// TODO Auto-generated constructor stub
 	}
 	
@@ -25,7 +24,6 @@ public class Bonus2 extends Bonus{
 	}
 	
 	public void bonus_effect() {
-		this.player.set_health(player.get_health()+70);
 		this.player.inc_score(1000);
 		this.destroy();
 	}

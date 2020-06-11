@@ -11,6 +11,7 @@ public abstract class Bonus extends Sprite{
 	public Bonus(float x, float y, int width, int height, Game game,Player player,BufferedImage Image) {
 		super(x, y, width, height, game,Image);
 		this.player=player;
+		game.getgamestate().bonuses.add(this);
 		// TODO Auto-generated constructor stub
 	}
 	

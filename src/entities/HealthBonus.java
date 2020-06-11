@@ -10,10 +10,9 @@ import GameLib.Sprite;
 
 public class HealthBonus extends Bonus{
 	
-	Player player;
 	public HealthBonus(float x, float y, int width, int height, Game game,Player player) {
 		super(x, y, width, height, game,player,Assets.shield);
-		this.player=player;
+		
 		// TODO Auto-generated constructor stub
 	}
 	

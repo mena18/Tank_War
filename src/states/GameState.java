@@ -6,8 +6,10 @@ import java.awt.image.AffineTransformOp;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 
+import Factory.BonusFactory;
+import Factory.TankFactory;
 import entities.HealthBonus;
-import entities.Bonus2;
+import entities.ScoreBonus;
 import entities.PlayerBullets;
 import entities.Enemy;
 import entities.Player;
@@ -32,33 +34,31 @@ public class GameState extends State{
 	private World world;
 	
 	public  SpriteGroup Players,enemy_tanks,player_bullets,bonuses,enemy_bullets,Player_base,enemy_base;
-	
+	public BonusFactory bonus_factory;
 	
 	public GameState(Game game) {
 		super(game);
+		bonuses = new SpriteGroup();
+		base = new Base(1250, 1250, 100, 100, game, Assets.base1);
+		
+		player = new Player(128,128,64,64,game);
+		Players = new SpriteGroup();
+		Players.add(player);
+		bonus_factory = new BonusFactory(bonuses,game);
+		
+
 		enemy_tanks = new SpriteGroup();
 		player_bullets = new SpriteGroup();
 		enemy_bullets = new SpriteGroup();
-		bonuses = new SpriteGroup();
-		Players = new SpriteGroup();
+		
 		Player_base = new SpriteGroup();
 		enemy_base = new SpriteGroup();
+		Player_base.add(base);
 		
-
 		
 		world = new World("res/map2.txt",game);
-		player = new Player(128,128,64,64,game);
-		base = new Base(1250, 1250, 100, 100, game, Assets.base1);
-	
-		Players.add(player);
-		enemy_tanks.add(new Enemy(300,300,50, 50, game));
-		enemy_tanks.add(new Enemy(500,500,50, 50, game));
-		enemy_tanks.add(new Enemy(600,600,50, 50, game));
-		bonuses.add(new HealthBonus(700, 500,30,30 ,game,player));
-		bonuses.add(new Bonus2(400, 400,30,30 ,game,player));
 		
-		Player_base.add(base);
-		enemy_base.add(new Base(50, 50, 100, 100, game, Assets.base2));
+		enemy_base.add(new Base(50, 50, 100, 100, game, Assets.base2,new TankFactory(game, enemy_tanks)));
 		
 	}
 
