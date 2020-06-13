@@ -20,10 +20,12 @@ public class MenuState extends State{
 	private String button_text;
 	private int width=300,height=100;
 	int x=500,y=300;
+	int text_position=300;
 	
 	public MenuState(Game game){
 		super(game);
 	}
+	
 
 	@Override
 	public void tick() {
@@ -43,7 +45,11 @@ public class MenuState extends State{
 	public void render() {
 		Handler.drawStaticRect(x, y, width, height, Color.darkGray);
 		Handler.drawStatictext_forMenu(Color.white,button_text, x+80, y+70);
-		Handler.drawStatictext_forMenu(Color.black,text, x+80, y-90);
+		Handler.drawStatictext_forMenu(Color.black,text, text_position, y-90);
+		if(game.getgamestate().player.get_pr_score()>0) {
+			Handler.drawStatictext_forMenu(Color.black,"Score "+game.getgamestate().player.get_pr_score(), x+40, y-180);
+		}
+		
 
 	}
 	
@@ -51,6 +57,14 @@ public class MenuState extends State{
 		this.text = text;
 		this.button_text = button_text;
 		this.width=width;
+		text_position=500;
+
+	}
+	public void set_values(int width,String text,String button_text,int text_position) {
+		this.text = text;
+		this.button_text = button_text;
+		this.width=width;
+		this.text_position = text_position;
 
 	}
 }

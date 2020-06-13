@@ -22,6 +22,7 @@ public class Assets {
 	public static BufferedImage enemy1_body,enemy1_canon;
 	public static BufferedImage enemy2_body,enemy2_canon;
 	public static BufferedImage enemy3_body,enemy3_canon;
+	public static BufferedImage metal,wood,tree_green;
 	
 	public static BufferedImage base1,base2,money,upgrade;
 	
@@ -74,6 +75,10 @@ public class Assets {
 		
 		shooting1 = new File("res/audio/playerjump.wav");
 		music_loop = new File("res/audio/level 1.wav");
+		
+		metal = ImageLoader.loadImage("metal.png");
+		wood = ImageLoader.loadImage("wood.png");
+		tree_green = ImageLoader.loadImage("tree_green.png");
 
 		
 		

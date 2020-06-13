@@ -35,7 +35,7 @@ public class Levels {
 		else if(current_level==3) {level_3();}
 		else {
 			current_level=1;
-			game.menustate.set_values(500,"You Win","play Again");
+			game.menustate.set_values(500,"Congratulation! You Won","play Again",300);
 			State.setState(game.menustate);
 			level_1();
 			gamestate.player.reset();
@@ -51,6 +51,7 @@ public class Levels {
 		gamestate.bonuses.clear();
 		gamestate.enemy_tanks.clear();
 		gamestate.player_bullets.clear();
+		gamestate.player.set_health(100);
 		gamestate.enemy_bullets.clear();
 		for(int i=0;i<gamestate.enemy_base.size();i++) {
 			gamestate.enemy_base.get(i).destroy();
@@ -73,17 +74,17 @@ public class Levels {
 		clear_previus_level();
 		gamestate.world = new World("res/map2.txt",game);
 		gamestate.enemy_base.add(new Base(50, 50, 100, 100, game, Assets.base2,new TankFactory(game, gamestate.enemy_tanks,2)));
-		gamestate.base  = new Base(3000, 3000, 100, 100, game, Assets.base1);
+		gamestate.base  = new Base(2350, 2350, 100, 100, game, Assets.base1);
 		gamestate.Player_base.add(gamestate.base);
-		gamestate.player.set_position(3000, 3000);
+		gamestate.player.set_position(2300, 2300);
 	}
 
 	public void level_3() {
 		clear_previus_level();
 		gamestate.world = new World("res/map3.txt",game);
 		gamestate.enemy_base.add(new Base(50, 50, 100, 100, game, Assets.base2,new TankFactory(game, gamestate.enemy_tanks,3)));
-		gamestate.base  = new Base(4300, 4300, 100, 100, game, Assets.base1);
+		gamestate.base  = new Base(3000, 3000, 100, 100, game, Assets.base1);
 		gamestate.Player_base.add(gamestate.base);
-		gamestate.player.set_position(4250, 4250);
+		gamestate.player.set_position(3000, 3000);
 	}
 }

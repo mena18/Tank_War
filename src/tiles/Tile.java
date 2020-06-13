@@ -13,12 +13,17 @@ public class Tile {
 	public static Tile[] tiles = new Tile[256];
 	public static Tile grass1 = new Tile(Assets.grass1,0);
 	public static Tile road = new Tile(Assets.road,1);
-	public static Tile wall = new Tile(Assets.wall,2,true);
-	public static Tile sand1 = new Tile(Assets.sand1,3);
 	
+	public static Tile sand1 = new Tile(Assets.sand1,3);
+
 	public static Tile grass2 = new Tile(Assets.grass2,4);
 	public static Tile sand2 = new Tile(Assets.sand2,5);
 	
+	public static Tile wall = new Tile(Assets.wall,2,true);
+	public static Tile wood = new Tile(Assets.wood,6,true);
+	public static Tile metal = new Tile(Assets.metal,7,true);
+
+
 	public static Tile trans_right = new Tile(Assets.trans_right,8);
 
 

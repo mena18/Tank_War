@@ -10,7 +10,7 @@ import gfx.Assets;
 import tilegame.Game;
 import tilegame.Handler;
 
-public class Tank extends Sprite{
+public abstract class Tank extends Sprite{
 
 	protected int health,max_health=100;
 	protected BufferedImage sprite_images[];
@@ -39,10 +39,7 @@ public class Tank extends Sprite{
 	}
 
 	@Override
-	public void update() {
-		// TODO Auto-generated method stub
-		
-	}
+	public abstract void update() ;
 	
 	public void draw() {
 		Handler.drawImage(sprite_images[last_dir],x , y, width, height);

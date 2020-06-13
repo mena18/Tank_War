@@ -15,6 +15,7 @@ import tiles.Tile;
 
 public class Player extends Tank{
 	private int score=0;
+	private int previous_score=0;
 	
 	public Player(float x, float y, int width, int height, Game game) {
 		super(x, y, width, height, game,100,Assets.player_body,Assets.player_canon);
@@ -88,6 +89,9 @@ public class Player extends Tank{
 	public int get_score() {
 		return this.score;
 	}
+	public int get_pr_score() {
+		return this.previous_score;
+	}
 	public int get_health() {
 		return this.health;
 	}
@@ -118,6 +122,7 @@ public class Player extends Tank{
 	}
 	
 	public void reset() {
+		previous_score = score;
 		score=0;
 		health=100;
 		speed=4;

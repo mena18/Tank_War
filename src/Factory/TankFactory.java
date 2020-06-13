@@ -28,7 +28,7 @@ public class TankFactory extends Thread{
 				}else if(lev==2) {
 					enemy_tanks.add(new Enemy(200+p1,200+p2,50, 50, game,3,3,600,Assets.enemy2_body,Assets.enemy2_canon));
 				}else {
-					enemy_tanks.add(new Enemy(200+p1,200+p2,50, 50, game,4,4,700,Assets.enemy3_body,Assets.enemy3_canon));
+					enemy_tanks.add(new Enemy(200+p1,200+p2,50, 50, game,4,5,700,Assets.enemy3_body,Assets.enemy3_canon));
 				}
 				
 				Thread.sleep(4000);
